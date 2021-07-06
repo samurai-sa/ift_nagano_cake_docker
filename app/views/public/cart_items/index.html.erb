@@ -1,0 +1,51 @@
+<div class="text-center">
+  <h1>
+    ショッピングカート
+    <%= link_to "カートを空にする", destroy_all_path, class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"}  %>
+  </h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-active">
+        <th scope="col"></th>
+        <th scope="col">商品名</th>
+        <th scope="col">単価</th>
+        <th scope="col">数量</th>
+        <th scope="col">小計</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sum = 0 %>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td scope="col"><%= attachment_image_tag cart_item.item, :image, size: "80x50", fallback: 'cake.jpg' %></td>
+          <td scope="col"><%= cart_item.item.name %></td>
+          </td>
+          <td scope="col"><%= cart_item.item.price %></td>
+          <td scope="col">
+            <%= form_with(model:cart_item, url:cart_item_path(cart_item), method: :PUT) do |f| %>
+              <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+              <%= f.submit "変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+          <td scope="col"><%= cart_item.item.price * cart_item.amount %></td>
+          <td scope="col"><%= link_to "削除", cart_item_path(cart_item), class: "btn btn-danger", method: :delete, data: {confirm: "削除しますか？"}  %></td>
+        </tr>
+        <% @sum += cart_item.item.price * cart_item.amount %>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <%= link_to "買い物を続ける", root_path, class: "btn btn-primary float-left" %>
+  <table class="table table-bordered">
+    <tr>
+      <th scope="col5" class="table-active">合計金額</th>
+      <td scope="col5"><%= @sum %>円</td>
+    </tr>
+  </table>
+  
+  <% if @cart_items.present? %>
+    <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+  <% end %>
+</div>

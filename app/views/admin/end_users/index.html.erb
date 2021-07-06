@@ -1,0 +1,30 @@
+<div class="text-center">
+  <h1>会員一覧</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-active">
+        <th scope="col">会員ID</th>
+        <th scope="col">氏名</th>
+        <th scope="col">メールアドレス</th>
+        <th scope="col">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @end_users.each do |end_user| %>
+        <tr>
+          <td scope="col"><%= end_user.id %></td>
+          <td scope="col"><%= end_user.last_name %><%= end_user.first_name %></td>
+          <td scope="col"><%= end_user.email %></td>
+          <td scope="col">
+            <% if end_user.is_deleted == false %>
+              有効
+            <% else %>
+              無効
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

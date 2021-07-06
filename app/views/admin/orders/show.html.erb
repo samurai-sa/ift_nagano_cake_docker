@@ -1,0 +1,82 @@
+<div class="text-center">
+  <h1>注文履歴詳細</h1>
+  
+  <table class="mx-auto table table-bordered">
+    <tr>
+      <th class="table-active w-50">購入者</th>
+      <td><%= @order.end_user.last_name %><%= @order.end_user.first_name %></td>
+    </tr>
+    <tr>
+      <th class="table-active">注⽂⽇</th>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <th class="table-active">配送先</th>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <th class="table-active">⽀払⽅法</th>
+      <td>
+        <% if @order.card? %>
+          <span>カード</span>
+        <% else %>
+          <span>銀行振込</span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="table-active">注⽂ステータス</th>
+      <td>
+         <%= form_with(model:@order, url:admin_order_path(@order), method: :PATCH) do |f| %>
+            <%= f.select :status, options_for_select([['入金待ち', "payment_waiting"], ['入金確認', "confirm"], ['製作中', "running"], ['発送準備中', "shipment_waiting"], ['発送済み', "executed"]], { :selected => @order.status}) %>
+            <%= f.submit '更新',class:"btn btn-success" %>
+          <% end %>
+      </td>
+    </tr>
+  </table>
+  
+  <br>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-active">
+        <th scope="col">商品名</th>
+        <th scope="col">単価</th>
+        <th scope="col">個数</th>
+        <th scope="col">小計</th>
+        <th scope="col">制作ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |order_detail| %>
+        <tr>
+          <td scope="col"><%= order_detail.item.name %></td>
+          <td scope="col"><%= order_detail.price.to_s(:delimited, delimiter: ',') %></td>
+          <td scope="col"><%= order_detail.amount %></td>
+          <td scope="col"><%= (order_detail.price * order_detail.amount).to_s(:delimited, delimiter: ',') %></td>
+          <td scope="col">
+            <%= form_with(model:order_detail, url:admin_order_detail_path(order_detail), method: :PATCH) do |f| %>
+              <%= f.select :making_status, options_for_select([['制作不可', "no_running"], ['制作待ち', "produce_waiting"], ['製作中', "produce_running"], ['製作完了', "produce_executed"]], { :selected => order_detail.making_status }) %>
+              <%= f.submit '更新',class:"btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <table class="table table-bordered">
+    <tr>
+      <th scope="col" class="table-active w-50">商品合計</th>
+      <td scope="col"><%= @sum = (@order.total_payment - @order.shipping_cost).to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+    <tr>
+      <th scope="col" class="table-active">送料</th>
+      <td scope="col"><%= @order.shipping_cost.to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+    <tr>
+      <th scope="col" class="table-active">ご請求金額</th>
+      <td scope="col"><%= @order.total_payment.to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+  </table>
+</div>

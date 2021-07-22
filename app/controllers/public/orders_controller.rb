@@ -12,8 +12,8 @@ class Public::OrdersController < ApplicationController
     @order = current_end_user.orders.new
     @order.payment_method = params[:order][:payment_method]
     @order.shipping_cost = 800
-    @cart_items = CartItem.all
-    
+    # @cart_items = CartItem.all
+    @cart_items = current_end_user.cart_items
     if params[:order][:address_option] == "0"
       @order.postal_code = current_end_user.postal_code
       @order.address = current_end_user.address
@@ -34,7 +34,6 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save!
-    
     current_end_user.cart_items.each do | cart_item |
       order_detail = OrderDetail.new
       order_detail.order_id = @order.id

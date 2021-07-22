@@ -24,7 +24,7 @@
           </td>
           <td scope="col"><%= cart_item.item.price %></td>
           <td scope="col">
-            <%= form_with(model:cart_item, url:cart_item_path(cart_item), method: :PUT) do |f| %>
+            <%= form_with(model:cart_item, url:cart_item_path(cart_item), method: :patch) do |f| %>
               <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
               <%= f.submit "変更", class: "btn btn-success" %>
             <% end %>

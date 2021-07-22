@@ -22,6 +22,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     
     current_cart_items = current_end_user.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    #current_cart_items = current_end_user.cart_items.exists?(item_id: params[:cart_item][:item_id])
     if current_cart_items.present?
       cart_item = CartItem.find_by(item_id: @cart_item.item_id, end_user_id: current_end_user.id)
       cart_item.update!(amount: cart_item.amount + @cart_item.amount)
@@ -44,8 +45,8 @@ class Public::CartItemsController < ApplicationController
   
   # カート内商品全削除
   def destroy_all
-    cart_item = current_end_user.cart_items
-    cart_item.destroy_all
+    cart_items = current_end_user.cart_items
+    cart_items.destroy_all
     flash[:notice] = 'カート内を削除しました。'
     redirect_to items_path
   end

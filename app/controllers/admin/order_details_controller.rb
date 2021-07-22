@@ -1,6 +1,7 @@
 class Admin::OrderDetailsController < ApplicationController
   
   def update
+    binding.pry
     order_detail = OrderDetail.find(params[:id])
     if order_detail.update(update_making_status_params)
       produce_executed_count = 0

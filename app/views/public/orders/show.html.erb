@@ -43,7 +43,7 @@
   <table class="table table-bordered">
     <tr>
       <th scope="col" class="table-active w-50">商品合計</th>
-      <td scope="col">    <%= @sum = (@order.total_payment - @order.shipping_cost).to_s(:delimited, delimiter: ',') %>円</td>
+      <td scope="col"><%= @sum = (@order.total_payment - @order.shipping_cost).to_s(:delimited, delimiter: ',') %>円</td>
     </tr>
     <tr>
       <th scope="col" class="table-active w-50">送料</th>

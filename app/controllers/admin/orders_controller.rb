@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
         end
       end
       flash[:notice] = '更新されました。'
-      redirect_to admin_orders_path
+      redirect_to admin_order_path(@order)
     else
       @order_details = @order.order_details
       render :show

@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1>注文履歴詳細</h1>
-  
+
   <table class="mx-auto table table-bordered">
     <tr>
       <th class="table-active w-50">購入者</th>
@@ -27,16 +27,16 @@
     <tr>
       <th class="table-active">注⽂ステータス</th>
       <td>
-         <%= form_with(model:@order, url:admin_order_path(@order), method: :PATCH) do |f| %>
-            <%= f.select :status, options_for_select([['入金待ち', "payment_waiting"], ['入金確認', "confirm"], ['製作中', "running"], ['発送準備中', "shipment_waiting"], ['発送済み', "executed"]], { :selected => @order.status}) %>
-            <%= f.submit '更新',class:"btn btn-success" %>
-          <% end %>
+        <%= form_with(model:@order, url:admin_order_path(@order), method: :PATCH) do |f| %>
+          <%= f.select :status, options_for_select([['入金待ち', "payment_waiting"], ['入金確認', "confirm"], ['製作中', "running"], ['発送準備中', "shipment_waiting"], ['発送済み', "executed"]], { :selected => @order.status}) %>
+          <%= f.submit '更新',class:"btn btn-success" %>
+        <% end %>
       </td>
     </tr>
   </table>
-  
+
   <br>
-  
+
   <table class="table table-bordered">
     <thead>
       <tr class="table-active">
@@ -64,7 +64,7 @@
       <% end %>
     </tbody>
   </table>
-  
+
   <table class="table table-bordered">
     <tr>
       <th scope="col" class="table-active w-50">商品合計</th>

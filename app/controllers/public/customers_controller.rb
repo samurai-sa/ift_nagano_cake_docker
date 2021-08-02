@@ -27,11 +27,11 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
+
   private
-  
+
   def end_user_params
     params.require(:end_user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number)
   end
-  
+
 end

@@ -8,10 +8,8 @@
     <p>¥<%= @item.price.to_s(:delimited, delimiter: ',') %>(税込)</p><br>
     <p>
       <%= form_with(model:@cart_item, url:cart_items_path ,method: :POST) do |f| %>
-        
         <%= f.hidden_field :item_id, value:@item.id %>
         <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10], {include_blank: "選択して下さい"} %>
-    
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
       <% end %>
     </p>

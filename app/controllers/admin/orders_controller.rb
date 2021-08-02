@@ -1,14 +1,14 @@
 class Admin::OrdersController < ApplicationController
-  
+
   def index
     @orders = Order.all
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
-  
+
   def update
     @order = Order.find(params[:id])
     if @order.update(update_status_params)
@@ -25,9 +25,9 @@ class Admin::OrdersController < ApplicationController
       render :show
     end
   end
-  
+
   private
-  
+
   def update_status_params
     params.require(:order).permit(:status)
   end

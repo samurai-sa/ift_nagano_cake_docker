@@ -1,33 +1,33 @@
 <div class="text-center">
   <h2>商品新規登録</h2>
-  
+
   <%= form_with(model:@item, url:admin_items_path ,method: :POST) do |f| %>
-  
+
     <div class="field">
       <%= f.label :商品画像 %><br>
       <%= f.attachment_field :image,  autofocus: true %>
     </div>
-    
+
     <div class="field">
       <%= f.label :商品名 %><br>
       <%= f.text_field :name, autofocus: true %>
     </div>
-    
+
     <div class="field">
       <%= f.label :商品説明 %><br>
       <%= f.text_field :introduction, autofocus: true %>
     </div>
-    
+
     <div class="field">
       <%= f.label :ジャンル %><br>
       <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
     </div>
-    
+
     <div class="field">
       <%= f.label :税抜価格 %><br>
       <%= f.text_field :price, autofocus: true %>
     </div>
-  
+
     <div class="field">
       <%= f.label :販売ステータス %><br>
       <%= f.radio_button :is_active, :true %>
@@ -35,11 +35,11 @@
       <%= f.radio_button :is_active, :false %>
       <%= f.label "販売停止中" %>
     </div>
-    
+
     <div class="action"><br>
       <%= f.submit "新規登録", class: "btn btn-success" %>
     </div>
-  
+
   <% end %>
 
 </div>

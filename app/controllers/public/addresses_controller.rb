@@ -5,7 +5,6 @@ class Public::AddressesController < ApplicationController
   end
 
   def new
-    
   end
 
   def create
@@ -48,11 +47,11 @@ class Public::AddressesController < ApplicationController
       render :index
     end
   end
-  
+
   private
-  
+
   def address_params
     params.require(:address).permit(:postal_code, :address, :name)
   end
-  
+
 end

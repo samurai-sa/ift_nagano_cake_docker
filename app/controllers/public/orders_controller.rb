@@ -5,6 +5,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = current_end_user.addresses
+    @address = Address.new
   end
 
   # 注文情報確認画面
@@ -26,6 +27,12 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+
+      @address = current_end_user.addresses.new(address_params)
+      @address.postal_code = params[:order][:postal_code]
+      @address.address = params[:order][:address]
+      @address.name = params[:order][:name]
+      @address.save!
     end
   end
 
@@ -68,6 +75,10 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:end_user_id, :postal_code, :address, :name, :shipping_cost, :total_payment, :payment_method, :status)
+  end
+
+  def address_params
+    params.permit(:postal_code, :address, :name, :end_user_id)
   end
 
   def cart_item_check

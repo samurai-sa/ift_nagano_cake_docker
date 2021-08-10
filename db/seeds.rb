@@ -8,13 +8,20 @@
 
 # 管理者ユーザー
 Admin.create!(
-  email: "admin08@example.com",
-  password: "admin08"
+  email: "admin01@example.com",
+  password: "admin01"
 )
 
 # ジャンルダミーデータ
 Genre.create!(
-  name: "ケーキ"
+  [
+    {
+      name: "和菓子"
+    },
+    {
+      name: "洋菓子"
+    }
+  ]
 )
 
 # 商品ダミーデータ

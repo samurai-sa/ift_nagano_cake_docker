@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     get 'end_users/index'
 
-    resources :items, only: [:index, :show, :new, :create, :edit, :update]
+    resources :items
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:index, :show, :update]
     resources :order_details, only: [:update]

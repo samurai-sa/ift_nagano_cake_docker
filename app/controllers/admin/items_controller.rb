@@ -29,6 +29,13 @@ class Admin::ItemsController < ApplicationController
   def edit
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy!
+    flash[:notice] = '削除されました。'
+    redirect_to admin_items_path
+  end
+
   private
 
   def item_params

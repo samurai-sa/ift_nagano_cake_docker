@@ -16,19 +16,3 @@ S1→S2スキルアップ研修 2.チーム解発[実装課題]テンプレー�
 4. カート機能 → 4_feature_carts
 5. 注文機能 → 5_feature_orders
 6. 検索機能 → 6_feature_search
-
-
-## ログインユーザー
-
-EndUser( 
-    email: "nagano01@example.com", 
-    password: "nagano01" 
-) 
-EndUser( 
-    email: "cake@example.com", 
-    password: "cake01" 
-) 
-Admin( 
-    email: "admin01@example.com", 
-    password: "admin01" 
-)

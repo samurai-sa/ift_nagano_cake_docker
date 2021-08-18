@@ -1,8 +1,18 @@
 Rails.application.routes.draw do
 
   root to: 'public/homes#top'
-  devise_for :admins
-  devise_for :end_users
+  # devise_for :admins
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
+    passwords:     'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  #devise_for :end_users
+  devise_for :end_users, controllers: {
+    sessions:      'end_users/sessions',
+    passwords:     'end_users/passwords',
+    registrations: 'end_users/registrations'
+  }
 
   namespace :admin do
     get '/' => 'homes#top'

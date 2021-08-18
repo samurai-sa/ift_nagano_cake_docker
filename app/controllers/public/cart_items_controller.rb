@@ -13,7 +13,8 @@ class Public::CartItemsController < ApplicationController
       flash[:notice] = '数量が変更されました。'
       redirect_to cart_items_path
     else
-      render :update
+      @cart_items = current_end_user.cart_items
+      render :index
     end
   end
 

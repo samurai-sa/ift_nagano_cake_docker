@@ -17,13 +17,13 @@ Admin.create!(
   EndUser.create!(
     email: "test#{n + 1}@example.com",
     password: "test0#{n + 1}",
-    last_name: "テスト#{n + 1}",
+    last_name: "テスト",
     first_name: "太郎#{n + 1}",
-    last_name_kana: "テスト#{n + 1}",
+    last_name_kana: "テスト",
     first_name_kana: "タロウ#{n + 1}",
     postal_code: sprintf('%06d', rand(999999)),
     address: "テスト県ダミー区#{n + 1}",
-    telephone_number: sprintf('%011d', rand(99999999999))
+    telephone_number: "090" + sprintf('%08d', rand(99999999))
   )
 end
 
@@ -41,14 +41,17 @@ Genre.create!(
     },
     {
       name: "チョコレート"
+    },
+    {
+      name: "キャンデイ"
     }
   ]
 )
 
 # 商品ダミーデータ
-5.times do |n|
+10.times do |n|
   Item.create!(
-    genre_id: rand(1..4),
+    genre_id: rand(1..5),
     name: "ケーキ#{n + 1}",
     image_id: "",
     introduction: "期間限定商品です",

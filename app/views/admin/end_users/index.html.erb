@@ -14,7 +14,11 @@
       <% @end_users.each do |end_user| %>
         <tr>
           <td scope="col"><%= end_user.id %></td>
-          <td scope="col"><%= end_user.last_name %><%= end_user.first_name %></td>
+          <td scope="col">
+            <%= link_to admin_end_user_path(end_user) do %>
+              <%= end_user.last_name %><%= end_user.first_name %>
+            <% end %>
+          </td>
           <td scope="col"><%= end_user.email %></td>
           <td scope="col">
             <% if end_user.is_deleted == false %>

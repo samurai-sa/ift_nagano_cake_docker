@@ -1,8 +1,12 @@
 <div class="text-center">
-  <h1>マイページ</h1>
-
-  <h3 class="float-left">登録情報</h3>
-  <%= link_to "編集する", customers_edit_path, class: "btn btn-success float-left" %>
+  <h1>
+    マイページ
+    <%= link_to customers_edit_path do %>
+      <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      </svg>
+    <% end %>
+  </h1>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -29,16 +33,14 @@
         <th scope="col" class="table-active">電話番号</th>
         <td scope="col"><%= current_end_user.telephone_number %></td>
       </tr>
+      <tr>
+        <th scope="col" class="table-active">配送先</th>
+        <td scope="col"><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></td>
+      </tr>
+      <tr>
+        <th scope="col" class="table-active">注文履歴</th>
+        <td scope="col"><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
+      </tr>
     </thead>
   </table>
-  <div class="float-left">
-    <h4>
-      配送先&nbsp&nbsp&nbsp&nbsp
-      <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %>
-    </h4>
-    <h4>
-      注文履歴
-      <%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %>
-    </h4>
-  </div>
 </div>

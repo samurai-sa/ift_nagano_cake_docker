@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    get 'end_users/index'
+    resources :end_users, only: [:index, :show]
 
     resources :items
     resources :genres, only: [:index, :create, :edit, :update]

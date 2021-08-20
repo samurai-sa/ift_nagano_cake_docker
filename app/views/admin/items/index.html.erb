@@ -1,7 +1,11 @@
 <div class="text-center">
   <h1>
     商品一覧
-    <%= link_to "商品新規登録", new_admin_item_path, class: "btn btn-success" %>
+    <%= link_to new_admin_item_path do %>
+      <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="black">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    <% end %>
   </h1>
 
   <table class="table table-bordered">

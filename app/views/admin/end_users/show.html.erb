@@ -1,0 +1,54 @@
+<div class="text-center">
+  <h1>
+  <%= @end_user.last_name %><%= @end_user.first_name %>
+  </h1>
+  <table class="table table-bordered">
+    <tr class="table-active">
+      <th scope="col">注文履歴</th>
+    </tr>
+  </table>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-Light">
+        <th scope="col">購入日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td scope="col">
+            <%= link_to admin_order_path(order) do %>
+              <%= order.created_at.strftime('%Y/%m/%d %H:%M') %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table class="table table-bordered">
+    <tr class="table-active">
+      <th scope="col">配送先</th>
+    </tr>
+  </table>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr class="table-Light">
+        <th scope="col">名前</th>
+        <th scope="col">郵便番号</th>
+        <th scope="col">住所</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td scope="col"><%= address.name %></td>
+          <td scope="col"><%= address.postal_code %></td>
+          <td scope="col"><%= address.address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

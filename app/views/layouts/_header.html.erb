@@ -2,6 +2,12 @@
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal"><%= link_to "NaganoCake", root_path %></h5>
     <nav class="my-2 my-md-0 mr-md-3">
+      <div class="inline-block" style="display:inline-block;">
+        <%= form_tag(items_path, method: :GET) do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag "検索", class: "btn btn-primary" %>
+        <% end %>
+      </div>
       <%= link_to "商品一覧", items_path, class: "p-2 text-dark" %>
       <%= link_to "マイページ", customers_show_path, class: "p-2 text-dark" %>
       <%= link_to "カート", cart_items_path, class: "p-2 text-dark" %>

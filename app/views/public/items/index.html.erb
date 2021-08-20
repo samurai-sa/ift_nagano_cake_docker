@@ -1,6 +1,8 @@
 <div class="text-center">
   <h1>商品一覧</h1>
-
+  <% unless @items.present? %>
+    <h4>検索結果はありません。</h4>
+  <% end %>
   <div class="card-body row d-flex justify-content-center">
     <% @items.each do |item| %>
       <div class="card m-4 col-md-3.5 p-2" style="width: 18rem;">

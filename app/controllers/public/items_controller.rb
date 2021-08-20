@@ -3,7 +3,11 @@ class Public::ItemsController < ApplicationController
 
   # 商品一覧表示
   def index
-    @items = Item.where(is_active: true)
+    if params[:search].present?
+      @items = Item.where(is_active: true).merge(Item.where('name LIKE ?',"%#{params[:search]}%"))
+    else
+      @items = Item.where(is_active: true)
+    end
   end
 
   # 商品詳細

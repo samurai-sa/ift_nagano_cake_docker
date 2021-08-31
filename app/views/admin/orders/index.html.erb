@@ -18,7 +18,7 @@
               <%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
             <% end %>
           <td scope="col"><%= order.end_user.last_name %><%= order.end_user.first_name %></td>
-          <td scope="col"><%= order.order_details.all.sum(:amount) %></td>
+          <td scope="col"><%= order.order_details.sum(:amount) %></td>
           <td scope="col">
             <% if order.payment_waiting? %>
               <span>入金待ち</span>

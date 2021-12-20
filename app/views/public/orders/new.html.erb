@@ -22,7 +22,11 @@
 		<!--登録済み住所から選択-->
     <%= f.radio_button :address_option, 1 %>
     <%= f.label :登録済み住所から選択 %><br>
-    <%= f.select :registered_address, @addresses.all.map { |address| ["#{address.postal_code}" "#{address.address}" "#{address.name}", address[:id]]} %><br>
+
+    <%# インスタンスメソッドを使用した場合 %>
+    <%= f.select :registered_address, options_from_collection_for_select(@addresses, :id, :address_display) %><br >
+    <%# インスタンスメソッドを使用しない場合 %>
+    <%# <%= f.select :registered_address, @addresses.all.map { |address| ["#{address.postal_code}" "#{address.address}" "#{address.name}", address[:id]]} %><br>
 
     <!--新しいお届け先-->
     <%= f.radio_button :address_option, 2 %>

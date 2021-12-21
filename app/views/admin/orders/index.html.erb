@@ -20,17 +20,7 @@
           <td scope="col"><%= order.end_user.last_name %><%= order.end_user.first_name %></td>
           <td scope="col"><%= order.order_details.sum(:amount) %></td>
           <td scope="col">
-            <% if order.payment_waiting? %>
-              <span>入金待ち</span>
-            <% elsif order.confirm? %>
-              <span>入金確認</span>
-            <% elsif order.running? %>
-              <span>製作中</span>
-            <% elsif order.shipment_waiting? %>
-              <span>発送準備中</span>
-            <% elsif order.executed? %>
-              <span>発送済み</span>
-            <% end %>
+            <%= order.status_i18n %>
           </td>
       <% end %>
     </tbody>

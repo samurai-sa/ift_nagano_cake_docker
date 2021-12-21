@@ -71,5 +71,9 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 
 # 画像投稿
-gem "refile", require: "refile/rails", github: 'manfe/refile'
-gem "refile-mini_magick"
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'
+
+# enum
+gem 'enum_help'
+gem 'rails-i18n'

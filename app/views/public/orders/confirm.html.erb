@@ -49,11 +49,7 @@
       <tr>
         <th scope="col" class="table-active">支払方法</th>
         <td scope="col">
-          <% if @order.card? %>
-            <span>カード</span>
-          <% else %>
-            <span>銀行振込</span>
-          <% end %>
+          <%= @order.payment_method_i18n %>
         </td>
       </tr>
       <tr>

@@ -14,27 +14,13 @@
     <tr>
       <th scope="col" class="table-active w-50">支払い方法</th>
       <td scope="col">
-        <% if @order.card? %>
-          <span>カード</span>
-        <% else %>
-          <span>銀行振込</span>
-        <% end %>
+        <%= @order.payment_method_i18n %>
       </td>
     </tr>
     <tr>
       <th scope="col" class="table-active w-50">ステータス</th>
       <td scope="col">
-        <% if @order.payment_waiting? %>
-          <span>入金待ち</span>
-        <% elsif @order.confirm? %>
-          <span>入金確認</span>
-        <% elsif @order.running? %>
-          <span>製作中</span>
-        <% elsif @order.shipment_waiting? %>
-          <span>発送準備中</span>
-        <% elsif @order.executed? %>
-          <span>発送済み</span>
-        <% end %>
+        <%= @order.status_i18n %>
       </td>
     </tr>
   </table>

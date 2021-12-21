@@ -1,0 +1,19 @@
+ja:
+  enums:
+    order:
+      status:
+        payment_waiting: '入金待ち'
+        confirm: '入金確認'
+        running: '製作中'
+        shipment_waiting: '発送準備中'
+        executed: '発送済み'
+      payment_method:
+        card: 'カード'
+        cash: '銀行振り込み'
+
+    order_detail:
+      making_status:
+      no_running: '着手不可'
+      produce_waiting: '製作待ち'
+      produce_running: '製作中'
+      produce_executed: '制作完了'
